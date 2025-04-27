@@ -3,22 +3,28 @@
 This project was developed for a practical interview for the **Data Analyst** position at **TSMX**.
 
 The goal is to import data from an Excel file into a PostgreSQL database, ensuring data integrity and handling inconsistencies.
-
+s
 
 ## Setup
 
-1. Install dependencies:
+1. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. Create a `.env` file with your database credentials
+2. **Create a `.env` file with your database credentials**.
 
-3. Initialize database (you need to have [Postgres](https://www.postgresql.org/) already installed on your machine):
+3. **(Optional)** Up the container:
+   If you are using a local installation of PostgreSQL, just ignore that step
+
+   ```bash
+   docker compose up
+   ```
+
+4. **Initialize the database**
    ```bash
    python setup.py
    ```
-
 
 ## How It Works
 

@@ -1,4 +1,5 @@
 import pandas as pd
+from .logger import logger
 from .helpers import check_cpf, state_to_uf, normalize_text
 
 class DataProcessor:
@@ -17,6 +18,7 @@ class DataProcessor:
                 df = self._clean_data(df)
             return df
         except Exception as e:
+            logger.error(e)
             self.dropped_records["other_errors"].append({"reason": str(e)})
             return None
 

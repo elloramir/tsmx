@@ -18,6 +18,7 @@ if __name__ == "__main__":
         view_contracts()
     else:
         processor = DataProcessor()
+        
         df = processor.preprocess_data(args.file)
         logger.info("Data Frame from sheet file has been pre-processed")
 
@@ -27,6 +28,7 @@ if __name__ == "__main__":
 
         loader = DataLoader(db_data)
         loader.clean_previous_data()
+        logger.info("On load process... (can take a while)")
         stats = loader.load_data(clients, contracts, processor.dropped_records)
 
         logger.info("Data loaded on database")

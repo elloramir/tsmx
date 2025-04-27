@@ -13,7 +13,8 @@ db = PostgresqlDatabase(
     getenv("DB_NAME"),
     user=getenv("DB_USER"),
     password=getenv("DB_PASS"),
-    host="localhost", port=5432
+    host=getenv("DB_HOST"),
+    port=getenv("DB_PORT")
 )
 
 class BaseModel(Model):
