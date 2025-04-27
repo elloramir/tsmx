@@ -1,3 +1,4 @@
+import pandas as pd
 from .database import *
 
 class DataLoader:
@@ -15,6 +16,12 @@ class DataLoader:
         self._process_contracts(contracts, client_ids)
         self.stats["dropped_records"] = dropped_records
         return self.stats
+
+    def clean_previous_data(self):
+        ClienteContrato.delete().execute()
+        ClienteContato.delete().execute()
+        Cliente.delete().execute()
+        Plano.delete().execute()
 
     def _process_clients(self, clients):
         client_ids = {}
@@ -35,7 +42,7 @@ class DataLoader:
             'nome_razao_social': client["nome_razao_social"],
             'nome_fantasia': client.get("nome_fantasia", ""),
             'cpf_cnpj': client["cpf_cnpj"],
-            'data_nascimento': client.get("data_nascimento"),
+            'data_nascimento': None if pd.isna(client.get("data_nascimento")) else client.get("data_nascimento"),
             'data_cadastro': client["data_cadastro"]
         }
 

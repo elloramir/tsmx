@@ -43,8 +43,8 @@ class DataProcessor:
         df = df.copy()  # Work on a clean copy to avoid SettingWithCopyWarning
         df = self._filter_invalid_cpfs(df)
         
-        # Use .loc for assignment to avoid warnings
-        df.loc[:, "Data Nasc."] = df["Data Nasc."].fillna(pd.NaT)
+        # Convert NaT to None for date fields
+        df.loc[:, "Data Nasc."] = df["Data Nasc."].where(pd.notna(df["Data Nasc."]), None)
         df.loc[:, "Isento"] = df["Isento"].str.lower() == "sim"
         df.loc[:, "Plano Valor"] = df["Plano Valor"].astype(float)
         df.loc[:, "UF"] = df["UF"].apply(state_to_uf)
@@ -90,16 +90,20 @@ class DataProcessor:
         """Extract contact information from a row"""
         contacts = []
         contact_types = {
-            "email": "Email",
-            "telefone": "Telefone", 
-            "celular": "Celular"
+            "Celular": "Celulares",
+            "Telefone": "Telefones", 
+            "E-Mail": "Emails"
         }
         
         for tipo, col in contact_types.items():
             if pd.notna(row.get(col, pd.NA)):
+                contact_value = str(row[col])
+                # Remove decimal part if it's a phone number
+                if tipo in ["Celular", "Telefone"]:
+                    contact_value = contact_value.split('.')[0]
                 contacts.append({
                     "tipo": tipo,
-                    "contato": str(row[col])
+                    "contato": contact_value
                 })
         
         return contacts

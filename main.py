@@ -12,6 +12,10 @@ if __name__ == "__main__":
         
         db_data = initialize_database()
         loader = DataLoader(db_data)
+
+        # This is util to test things again and again...
+        loader.clean_previous_data()
+
         stats = loader.load_data(clients, contracts, processor.dropped_records)
         
         print_import_summary(stats)
