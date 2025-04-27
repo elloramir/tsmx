@@ -18,9 +18,6 @@ if __name__ == "__main__":
         processor = DataProcessor()
         df = processor.preprocess_data(args.file)
 
-        if not df:
-            exit("Error: Failed to process data.")
-
         clients = processor.extract_clients(df)
         contracts = processor.extract_contracts(df, clients)
 
