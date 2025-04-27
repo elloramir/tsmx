@@ -4,7 +4,6 @@ This project was developed for a practical interview for the **Data Analyst** po
 
 The goal is to import data from an Excel file into a PostgreSQL database, ensuring data integrity and handling inconsistencies.
 
----
 
 ## Setup
 
@@ -20,7 +19,6 @@ The goal is to import data from an Excel file into a PostgreSQL database, ensuri
    python setup.py
    ```
 
----
 
 ## How It Works
 
@@ -29,7 +27,6 @@ The goal is to import data from an Excel file into a PostgreSQL database, ensuri
 - Ensure no duplicated clients based on CPF/CNPJ.
 - Show a summary of imported and dropped records.
 
----
 
 ## Usage
 
