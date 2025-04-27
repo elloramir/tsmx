@@ -1,0 +1,54 @@
+# Bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.tar.gz
+*.whl
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Python IDEs
+.idea/
+.vscode/
+
+# PyCharm
+*.iml
+.idea/
+
+# VS Code
+.vscode/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pylint
+pylint-report.txt
+pylint-global-rcs.yaml
+
+# Test and coverage
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Environments
+.env
+.env.*
+!.env.sample
