@@ -12,9 +12,9 @@ The goal is to import data from an Excel file into a PostgreSQL database, ensuri
    pip install -r requirements.txt
    ```
 
-2. Create a `.env` file with your database credentials:
+2. Create a `.env` file with your database credentials
 
-3. Initialize database:
+3. Initialize database (you need to have [Postgres](https://www.postgresql.org/) already installed on your machine):
    ```bash
    python setup.py
    ```
